@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wordle</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        align-items: center;
+        background: #121213;
+        color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      table {
+        border-collapse: separate;
+        border-spacing: 5px;
+        margin-bottom: 16px;
+      }
+
+      td {
+        border: 2px solid #565a5e;
+        box-sizing: border-box;
+        font-size: 2rem;
+        font-weight: bold;
+        height: 58px;
+        text-align: center;
+        width: 58px;
+      }
+
+      .correct { background: #3f7938; border-color: #3f7938; color: white; }
+      .present { background: #806713; border-color: #806713; color: white; }
+      .absent { background: #303134; border-color: #303134; color: white; }
+
+      #message {
+        min-height: 1.5em;
+        text-align: center;
+      }
+
+      #keyboard {
+        max-width: 500px;
+        width: 100%;
+      }
+
+      .keyboard-row {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        margin-bottom: 6px;
+      }
+
+      .keyboard-row button {
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        flex: 1;
+        font-weight: bold;
+        min-height: 48px;
+        padding: 0 2px;
+      }
+
+      .keyboard-row button:not(.correct):not(.present):not(.absent) {
+        background: #565a5e;
+        color: white;
+      }
+
+      #new-game { margin-top: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Wordle</h1>
+    <p id="message" role="status" aria-live="polite">Loading words...</p>
+    <table aria-label="Wordle board: six guesses of five letters">
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div id="keyboard" aria-label="On-screen keyboard">
+      <div class="keyboard-row">
+        <button type="button" data-key="q">Q</button><button type="button" data-key="w">W</button><button type="button" data-key="e">E</button><button type="button" data-key="r">R</button><button type="button" data-key="t">T</button><button type="button" data-key="y">Y</button><button type="button" data-key="u">U</button><button type="button" data-key="i">I</button><button type="button" data-key="o">O</button><button type="button" data-key="p">P</button>
+      </div>
+      <div class="keyboard-row">
+        <button type="button" data-key="a">A</button><button type="button" data-key="s">S</button><button type="button" data-key="d">D</button><button type="button" data-key="f">F</button><button type="button" data-key="g">G</button><button type="button" data-key="h">H</button><button type="button" data-key="j">J</button><button type="button" data-key="k">K</button><button type="button" data-key="l">L</button>
+      </div>
+      <div class="keyboard-row">
+        <button type="button" data-key="Enter">Enter</button><button type="button" data-key="z">Z</button><button type="button" data-key="x">X</button><button type="button" data-key="c">C</button><button type="button" data-key="v">V</button><button type="button" data-key="b">B</button><button type="button" data-key="n">N</button><button type="button" data-key="m">M</button><button type="button" data-key="Backspace" aria-label="Delete">Del</button>
+      </div>
+    </div>
+    <button id="new-game" type="button" disabled>New game</button>
+    <script src="game.js" defer></script>
+  </body>
+</html>
